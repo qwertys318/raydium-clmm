@@ -406,7 +406,7 @@ pub fn swap_internal<'b, 'info>(
                         state.fee_growth_global_x64
                     },
                     &updated_reward_infos,
-                );
+                )?;
                 // update tick_state to tick_array account
                 tick_array_current.update_tick_state(
                     next_initialized_tick.tick,
@@ -545,7 +545,9 @@ pub fn swap_internal<'b, 'info>(
     }
 
     Ok((amount_0, amount_1))
-}pub fn swap_internal_tmp<'b, 'info>(
+}
+
+pub fn swap_internal_tmp<'b, 'info>(
     amm_config: &AmmConfig,
     pool_state: &mut RefMut<PoolState>,
     tick_array_states: &mut VecDeque<RefMut<TickArrayState>>,
@@ -826,7 +828,7 @@ pub fn swap_internal<'b, 'info>(
                         state.fee_growth_global_x64
                     },
                     // &updated_reward_infos,
-                );
+                )?;
                 // update tick_state to tick_array account
                 tick_array_current.update_tick_state(
                     next_initialized_tick.tick,
